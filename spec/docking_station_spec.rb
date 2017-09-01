@@ -39,6 +39,13 @@ describe '#dock' do
       subject.dock(bike)
       expect(subject.bike).to eq(bike)
     end
+
+    it "raises exception when docking station is full" do
+      bike = Bike.new
+      subject.dock(bike)
+      bike2 = Bike.new
+      expect {subject.dock(bike2)}.to raise_exception("Docking Station is full")
+    end
   end
 end
 
