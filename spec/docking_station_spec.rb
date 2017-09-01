@@ -1,16 +1,27 @@
 #impicitly defined subject syntax
 
 require 'docking_station'
+require 'bike'
 
-describe DockingStation do
-  it {is_expected.to respond_to :release_bike}
-  it "releases a working bike" do
-    bike = subject.release_bike
-    expect(bike).to be_working
-  it "receives a bike" do
-    bike = subject.receives_bike
-    expect(bike).to eq("docked")
+RSpec.describe DockingStation do
+  describe '#release_bike' do
+
+    it "releases an instance of Bike" do
+      bike = subject.release_bike
+      expect(bike).to be_instance_of(Bike)
     end
+
+    it "bike is working" do
+      bike = subject.release_bike
+      expect(bike).to be_working
+    end
+  end
+
+describe '#dock' do
+#    it "docks a bike" do
+#      subject.dock(bike)
+#    end
+    it {is_expected.to respond_to(:dock).with(1).argument}
   end
 end
 
