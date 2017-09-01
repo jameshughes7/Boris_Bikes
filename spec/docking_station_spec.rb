@@ -18,10 +18,11 @@ RSpec.describe DockingStation do
   end
 
 describe '#dock' do
-#    it "docks a bike" do
-#      subject.dock(bike)
-#    end
-    it {is_expected.to respond_to(:dock).with(1).argument}
+    it "docks a bike" do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.bike).to eq(bike)
+    end
   end
 end
 
